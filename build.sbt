@@ -26,7 +26,7 @@ resourceGenerators in Compile += Def.task {
 
   IO.writeLines(target,
     IO.readLines(source).map {
-      line => line.replace(fullFileName, fastFileName)
+      line => line.replace(fullFileName, s"../$fastFileName")
     }
   )
 

@@ -1,19 +1,21 @@
-import scala.scalajs.js.JSApp
 import org.scalajs.dom
-import dom.{document, window}
+import org.scalajs.dom.document
 
 import java.util.UUID
 
-object MainApp extends JSApp {
+object MainApp {
 
-  def randonId = UUID.randomUUID()
-  def main(): Unit = {
-    println("Starting 'uuidgen'...")
+  def randomId: UUID = UUID.randomUUID()
+  def main(args: Array[String]): Unit = {
 
-    val p = document.createElement("p")
-    val text = document.createTextNode(s"id=$randonId")
-    p.appendChild(text)
-    document.body.appendChild(p)
+    val uuid = document.getElementById("uuid")
+    uuid.textContent = randomId.toString
+    val button = document.getElementById("generate_btn")
+
+    button.addEventListener("click", { (e: dom.MouseEvent) =>
+      uuid.textContent = randomId.toString
+    })
+
   }
 
 }
